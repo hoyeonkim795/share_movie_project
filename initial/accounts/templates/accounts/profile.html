@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+
+<style>
+.profile-header {
+    transform: translateY(5rem);
+}
+body {
+    background: #654ea3;
+    background: -webkit-linear-gradient(to right, #654ea3, #eaafc8);
+    background: linear-gradient(to right, #654ea3, #eaafc8);
+    min-height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="row">
+    <div class="col-lg-7 mx-auto text-white text-center pt-5 text_R">
+            {% if person.nickname %}
+            <h1 class="display-4">{{ person.nickname }} Profile Page</h1>
+            {%else %}
+            <h1 class="display-4">{{ person.username }} Profile Page</h1>
+            {% endif %}
+        
+    </div>
+</div><!-- End -->
+
+
+<div class="row py-5 px-4">
+    <div class="col-xl-6 col-md-6 col-sm-10 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 bg-dark">
+                <div class="media align-items-end profile-header">
+                    {% if person.image and request.user == person %}
+                    <div class="profile mr-3"><img src="{{ person.image.url }}" alt="img" width="130" class="rounded mb-2 img-thumbnail"><a href="{% url 'accounts:profile_edit' user.username %}" class="btn btn-dark btn-sm btn-block">Edit profile</a></div>
+                    {% elif person.image and request.user != person %}
+                    <div class="profile mr-3"><img src="{{ person.image.url }}" alt="img" width="130" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-dark btn-sm btn-block">Direct Message</a></div>
+                    {% elif person.image != 1 and request.user != person %}
+                    <div class="profile mr-3"><img src="/static/noprofile.jpg" alt="img" width="130" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-dark btn-sm btn-block">Direct Message</a></div>
+                    {% elif person.image != 1 and request.user == person %}
+                    <div class="profile mr-3"><img src="/static/noprofile.jpg" alt="img" width="130" class="rounded mb-2 img-thumbnail"><a href="{% url 'accounts:profile_edit' user.username %}" class="btn btn-dark btn-sm btn-block">Edit profil</a></div>
+                    {% endif %}
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-0">{{ person.username }}</h4>
+                        {% if person.nickname %}
+                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>{{ person.nickname }}</p>
+                        {% else %}
+                        <p class="small mb-4"> <i class="fa fa-map-marker mr-2"></i>반갑습니다</p>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{ reviews.count }}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Reviews</small>
+                    </li>
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block">{{ person.followers.count }}</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Followers</small>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="py-4 px-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h5 class="mb-0 text_B">최근 리뷰</h5><a href="#" class="btn btn-link text-muted">Show all</a>
+                </div>
+                <div class="row">
+                    {% if reviews %}
+                    {% for review in reviews %}
+                    <div class="col-lg-6 mb-2 pr-lg-1"><a href="{% url 'articles:review_detail' review.movie.pk review.pk %}" class="list-group-item list-group-item-action"><img src="https://image.tmdb.org/t/p/w300/{{review.movie.poster_path}}" alt="" class="img-fluid rounded shadow-sm" style="margin: auto;"></a></div>
+                    {% endfor %}
+                    {% else %}
+                    <p>등록된 리뷰가 없습니다.</p>
+                    {% endif %}
+            </div>
+                <div class="py-4">
+                    <h5 class="mb-3 text_B">프로필 소개</h5>
+                    <div class="p-4 bg-light rounded shadow-sm text_XL">
+                        {% if person.myinfo %}
+                        <p class="font-italic mb-0">{{ person.myinfo }}</p>
+                        {% else %}
+                        <p class="font-italic mb-0 text_XL">등록된 소개가 없습니다</p>
+                        {% endif %}
+                        <ul class="list-inline small text-muted mt-3 mb-0">
+                            <li class="list-inline-item"><i class="fa fa-comment-o mr-2"></i></li>
+                            <li class="list-inline-item"><i class="fa fa-heart-o mr-2"></i></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class = "following">
+                {% if request.user != person %}
+                    {% if request.user in person.followers.all %}
+                    <a href="{% url 'accounts:follow' person.username %}" class="btn btn-dark btn-sm btn-block text_R" style="width: 30%;">팔로우 취소</a>
+                    {% else %}
+                    <a href="{% url 'accounts:follow' person.username %}" class="btn btn-dark btn-sm btn-block text_R" style="width: 30%;">팔로우</a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div>
+        </div><!-- End profile widget -->
+
+    </div>
+</div>
+
+
+{% endblock %}

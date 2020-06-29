@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load bootstrap_pagination %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="text-center">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a id="popularBtn" class="nav-link active text_L" href="{% url 'articles:movie_list' %}">평점순</a>
+            </li>
+            <li class="nav-item">
+              <a id="lastBtn" class="nav-link active text_L" href="{% url 'articles:last_movie_list' %}">최신순</a>
+            </li>
+        </ul>
+    
+        {% for movie in page_obj %}   
+            <div class="card d-inline-flex m-10 justify-content-center" style="width: 15rem;">
+                <form action="{% url 'articles:movie_detail' movie.pk %}">
+                    <button class="btn-poster">
+                        <div class="poster-wrap position-relative">
+                            <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" alt="movie_img" style="width: 15rem; height: 20rem;">
+                            <div class="description">
+                                <h5 class="text_R">{{ movie.title }}</h5>
+                                <p class="text_L">{{ movie.release_date }}</p>
+                            </div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        {% endfor %}
+        <div class="d-flex justify-content-center" style="margin-top: 20px;">
+            {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+<style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: NanumSquare_acB;
+    }
+    .wrap {
+    height: 100%;
+    width: 100%;
+    background-image: url('/static/reviewform.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    }
+    .review {
+        width: 669px;
+        position: relative;
+        margin: 6% auto;
+        background: #fff;
+        padding: 5px;
+        overflow: hidden;
+    }
+    .reviewform {
+        width: 85%;
+        padding: 10px 30px;
+        cursor: pointer;
+        display: block;
+        margin: auto;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% load bootstrap4 %}
+<header class="mx-auto" style="width: 200px; margin-top: 50px;">
+    <div style="margin-bottom:50px;">
+      <b class = "text_B" style="color: rgb(98, 47, 238);">취향</b><span class="text_B"> 나누기</span>
+  </div>
+</header>
+<div class="wrap">
+    <div class="review rounded-lg" >
+        <div class="reviewform">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button class="btn text_R" style="background-color: rgb(98, 47, 243); color: white; margin-left: 202px; margin-top: 10px;">취향 공유하기</button>
+            </form>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

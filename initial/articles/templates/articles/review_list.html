@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load bootstrap_pagination %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+<style>
+
+</style>
+{% endblock %}
+
+{% block content %}
+<header class="mx-auto" style="width: 200px; margin-top: 50px;">
+  <div style="margin-bottom:50px;">
+    <b class = "text_B" style="color: rgb(98, 47, 238);">취향</b><span class="text_B"> 나눔소</span>
+  </div>
+</header>
+
+<div class="container" >
+    <div style="display: block;">
+      <button class="btn text_R" style="background-color: rgb(98, 47, 243); color: white; margin-bottom: 20px;">방만들기</button>
+  </div>
+  {% for movie in page_obj %}
+  <div class="card d-inline-flex m-10 justify-content-center" style="width: 20rem;">
+        <button class="btn-poster">
+          <div class="poster-wrap position-relative">
+              <img src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}" alt="movie_img" style="width: 20rem; height: 22rem;">
+              <div class="description">
+                  <h5 class="text_R">{{ movie.title }}</h5>
+                  <p class="text_L">{{ movie.release_date }}</p>
+              </div>
+          </div>
+      </button>
+      <div class="card-body">
+        <!-- 영화설명 -->
+        <div class="text_B">
+          {% if movie.vote_average > 8.6 %}
+          <div># 아주 높은 평점</div>
+          {% elif movie.vote_average > 7 and 8.6 > movie.vote_average %}
+          <div># 꽤 높은 평점</div>
+          {% else %}
+          <div># 보통 평점</div>
+          {% endif %}
+          {% if movie.original_language == 'ko' %}
+          <div># 국내영화</div>
+          {% else %}
+          <div># 해외영화</div>
+          {% endif %}
+        </div>
+        <span>
+          <a href="{% url 'articles:movie_detail' movie.pk %}">
+            <button class="btn text_R" style="background-color: rgb(98, 47, 243); color: white; margin-top: 10px;">영화구경</button>
+          </a>
+          <a href="{% url 'articles:community' movie.pk %}">
+            <button class="btn text_R" style="background-color: rgb(98, 47, 243); color: white; margin-top: 10px; margin-left: 12px;">입장</button>
+          </a>
+        </span>
+      
+    </div>
+  </div>
+  {% endfor %}
+  <div class="d-flex justify-content-center" style="margin-top: 20px;">
+    {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+</div>
+</div>
+
+{% endblock %}

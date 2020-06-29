@@ -1,0 +1,135 @@
+[
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 28,
+			"name": "\uc561\uc158"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 12,
+			"name": "\ubaa8\ud5d8"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 16,
+			"name": "\uc560\ub2c8\uba54\uc774\uc158"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 35,
+			"name": "\ucf54\ubbf8\ub514"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 80,
+			"name": "\ubc94\uc8c4"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 99,
+			"name": "\ub2e4\ud050\uba58\ud130\ub9ac"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 18,
+			"name": "\ub4dc\ub77c\ub9c8"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 10751,
+			"name": "\uac00\uc871"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 14,
+			"name": "\ud310\ud0c0\uc9c0"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 36,
+			"name": "\uc5ed\uc0ac"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 27,
+			"name": "\uacf5\ud3ec"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 10402,
+			"name": "\uc74c\uc545"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 9648,
+			"name": "\ubbf8\uc2a4\ud130\ub9ac"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 10749,
+			"name": "\ub85c\ub9e8\uc2a4"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 878,
+			"name": "SF"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 10770,
+			"name": "TV \uc601\ud654"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 53,
+			"name": "\uc2a4\ub9b4\ub7ec"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 10752,
+			"name": "\uc804\uc7c1"
+		}
+	},
+	{
+		"model": "articles.genre",
+		"fields": {
+			"id": 37,
+			"name": "\uc11c\ubd80"
+		}
+	}
+]

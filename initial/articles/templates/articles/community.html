@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_pagination %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex flex-row-reverse align-content-center">
+        <form action="{% url 'articles:review_create' movie.pk %}">
+            <button class="btn text_R" style="background-color: rgb(98, 47, 238); color: white; margin-top: 20px;">작성하기</button>
+        </form>
+    </div>
+    <div>
+        <a href="#" class="text-decoration-none text_B" style="color: rgb(98, 47, 238);">{{ movie.title }}</a><span class="text_B">를</span>
+        <p class="text_B">보고 느낀 점을 자유롭게 이야기해보세요</p>
+    </div>
+    <div style="margin-top: 70px;">
+        {% for review in page_obj %}
+        {% if forloop.counter|divisibleby:"2" %}  
+            <a href="{% url 'articles:review_detail' movie.pk review.pk %}" class="text-decoration-none" >
+                <div class="d-flex community_txt_post" style="margin-bottom: 50px; ; border-radius: 20px 20px 20px 20px;">
+                    <div class="d-flex flex-column justify-content-center align-content-center" style="margin:20px;">
+                        {% if review.user.image %}
+                            <img class="profile_img" src = "{{ review.user.image.url }}" style="width: 100px; height: 100px;">
+                        {% else %}
+                            <img class="profile_img" src = "/static/noprofile.jpg" style="width: 100px; height: 100px;">
+                        {% endif %}
+                        <p class="text_L text-center" style="color: black;">{{ review.user.username }}</p>
+                    </div>
+                    <div style="width:100%; margin: 20px;">
+                        <div class="d-flex justify-content-between" style="width: 100%;">
+                            <p class="text_R font-weight-bold" style="color: black;">{{ review.title }}</p>
+                            <p class="text_L text-muted">제 점수는 {{ review.score }}점입니다.</p>
+                        </div>
+                        <div class="">
+                            <p style="color: black;">{{ review.content }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        {% else %}
+            <a href="{% url 'articles:review_detail' movie.pk review.pk %}" class="text-decoration-none" >
+                <div class="d-flex community_txt_post" style="margin-bottom: 50px; background-color: rgb(243, 243, 243); border-radius: 20px 20px 20px 20px;">
+                    <div style="width:100%; margin: 20px;">
+                        <div class="d-flex justify-content-between" style="width: 100%;">
+                            <p class="text_R font-weight-bold" style="color: black;">{{ review.title }}</p>
+                            <p class="text_L text-muted" >제 점수는 {{ review.score }}점입니다.</p>
+                        </div>
+                        <div class="">
+                            <p style="color: black;">{{ review.content }}</p>
+                        </div>
+                    </div>
+                    <div style="margin: 20px;">
+                        {% if review.user.image %}
+                            <img class="profile_img" src = "{{ review.user.image.url }}" style="width: 100px; height: 100px;">
+                        {% else %}
+                            <img class="profile_img" src = "/static/noprofile.jpg" style="width: 100px; height: 100px;">
+                        {% endif %}
+                        <p class="text_L text-center" style="color: black;">{{ review.user.username }}</p>
+                    </div>
+                </div>
+            </a>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="d-flex justify-content-center" style="margin-top: 20px;">
+    {% bootstrap_paginate page_obj range=10 show_prev_next="false" show_first_last="true" %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block head %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet"> 
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+<style>
+    .hero {
+  padding: 6.25rem 0px !important;
+  margin: 0px !important;
+}
+.cardbox {
+  border-radius: 3px;
+  margin-bottom: 20px;
+  padding: 0px !important;
+}
+
+/* ------------------------------- */
+/* Cardbox Heading
+---------------------------------- */
+.cardbox .cardbox-heading {
+  padding: 16px;
+  margin: 0;
+}
+.cardbox .btn-flat.btn-flat-icon {
+ border-radius: 50%;
+ font-size: 24px;
+ height: 32px;
+ width: 32px;
+ padding: 0;
+ overflow: hidden;
+ color: #fff !important;
+ background: #b5b6b6;
+ 
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+.cardbox .float-right .dropdown-menu{
+  position: relative;
+  left: 13px !important;  
+}
+.cardbox .float-right a:hover{
+  background: #f4f4f4 !important;	
+}
+.cardbox .float-right a.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 4px 0px 4px 10px;
+  clear: both;
+  font-weight: 400;
+  font-family: 'Abhaya Libre', serif;
+  font-size: 14px !important;
+  color: #848484;
+  text-align: inherit;
+  white-space: nowrap;
+  background: 0 0;
+  border: 0;
+}
+
+/* ------------------------------- */
+/* Media Section
+---------------------------------- */
+.media {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+.d-flex {
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+.media .mr-3{
+  margin-right: 1rem !important;
+}
+.media img{
+  width: 48px !important;
+  height: 48px !important;
+  padding: 2px;
+  border: 2px solid #f4f4f4;
+} 
+.media-body {
+  -ms-flex: 1;
+  flex: 1;
+  padding: .4rem !important;
+}
+.media-body p{
+  font-family: 'Rokkitt', serif;	
+  font-weight: 500 !important;
+  font-size: 14px;
+  color: #88898a;
+}
+.media-body small span{
+  font-family: 'Rokkitt', serif;	
+  font-size: 12px;
+  color: #aaa;
+  margin-right: 10px;
+}
+
+
+/* ------------------------------- */
+/* Cardbox Item
+---------------------------------- */
+.cardbox .cardbox-item {
+    position: relative;
+    display: block;
+}
+.cardbox .cardbox-item img{
+    margin-left:70px;
+}
+.img-responsive{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}	
+.fw {
+    width: 100% !important;
+	height: auto;
+}
+
+
+/* ------------------------------- */
+/* Cardbox Base
+---------------------------------- */
+.cardbox-base{
+ border-bottom: 2px solid #f4f4f4;
+}	
+/* ------------------------------- */
+/* Cardbox Comments
+---------------------------------- */
+.cardbox-comments{
+  padding: 10px 40px 20px 40px !important;
+  font-size: 0px;	
+  text-align: center;
+  display: inline-block;
+}
+.cardbox-comments .comment-avatar img{
+  margin-top: 1px;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+}
+.cardbox-comments .comment-body {
+  overflow: auto;
+}
+.search {
+ position: relative;
+ right: -60px;
+ top: -40px;
+ margin-bottom: -40px;
+ border: 2px solid #f4f4f4;	
+ width: 100%;
+ overflow: hidden;
+}
+.search input[type="text"] {
+ background-color: #fff;
+ line-height: 10px;
+ padding: 15px 60px 20px 10px;
+ border: none;
+ border-radius: 4px;
+ width: 350px;
+ font-family: 'Rokkitt', serif;
+ font-size: 14px;
+ color: #8d8d8d;
+ height: inherit;
+ font-weight: 700;
+}
+.search button {
+ position: absolute;
+ right: 0;
+ top: 0px;
+ border: none;
+ background-color: transparent;
+ color: #bbbbbb;
+ padding: 15px 25px;
+ cursor: pointer;
+ 
+ display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+text-align: center;
+}
+.search button i {
+ font-size: 20px;
+ line-height: 30px;
+ display: block;
+}
+
+
+/* ------------------------------- */
+/* Author
+---------------------------------- */
+
+
+</style>
+{% endblock %}
+
+{% block content %}
+
+{% load bootstrap4 %}
+
+<section class="hero">
+    <div class="container">
+    <div class="row">	
+    <div class="col-lg-6 offset-lg-3">
+    <div class="cardbox shadow-lg bg-white">
+        <div class="cardbox-heading">
+            <div class="dropdown float-right">
+            {% if request.user == review.user %}
+            <a href="{% url 'articles:review_update' movie.pk review.pk %}">
+                <button class="btn" style="background-color: rgb(98, 47, 243); color: white;">
+                수정</button>
+            </a>
+            <a href="{% url 'articles:review_delete' movie.pk review.pk %}">
+                <button class="btn" style="background-color: rgb(98, 47, 243); color: white;">
+                삭제</button>
+            </a>
+            {% endif %}
+        </div>
+        <div class="media m-0">
+        <div class="d-flex mr-3">
+          <a href="{% url 'accounts:profile' review.user %}">
+            {% if review.user.image %}
+            <img class="img-fluid rounded-circle" src="{{ review.user.image.url }}" alt="User">
+            {% else %}
+            <img class="img-fluid rounded-circle" src="/static/noprofile.jpg" alt="User">
+            {% endif %}
+        </a>    
+        </div>
+        <div class="media-body">
+        <p class="m-0">{{ review.user }}</p>
+        <small><span><i class="icon ion-md-pin"></i> {{ review.created_at }}</span></small>
+        <hr>
+        <h3 class="text_B">{{ review.title }}</h3>
+        </div>
+        </div><!--/ media -->
+        </div><!--/ cardbox-heading -->
+        
+        <div class="cardbox-item">
+        <img class="img-fluid" src="https://image.tmdb.org/t/p/w400/{{ review.movie.poster_path }}" alt="Image">
+        </div><!--/ cardbox-item -->
+        <div class="cardbox-base">
+        <p class="text_L" style="margin-left: 70px; margin-top: 70px; margin-right:70px; margin-bottom:70px;">{{ review.content }}</p>
+        </div><!--/ cardbox-base -->
+        <!-- comment list -->
+
+        <div style="border-bottom: 2px solid #f4f4f4;">
+            {% for comment in comments %}
+            <p class="text_L" style="margin-left:70px;">{{ comment.user }} : {{ comment.content }}</p>
+            {% if comment.user == request.user %}
+            <a href="{% url 'articles:comment_delete' movie.pk review.pk comment.pk %}">
+              <button class="btn text_L" style="background-color: rgb(98, 47, 243); color: white;">삭제</button>
+            </a>
+            <a href="{% url 'articles:comment_update' movie.pk review.pk comment.pk %}">
+              <button class="btn text_L" style="background-color: rgb(98, 47, 243); color: white;">수정</button>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="cardbox-comments">
+        <span class="comment-avatar float-left">
+        {% if request.user.image %}
+        <img class="rounded-circle" src="{{ request.user.image.url }}" alt="...">     
+        {% else %}
+        <img class="rounded-circle" src="/static/noprofile.jpg" alt="...">     
+        {% endif %}                   
+        </span>
+
+        <div class="search">
+        <form action="{% url 'articles:comment_create' movie.pk review.pk %}" method="POST">
+        {% csrf_token %}     
+        {% bootstrap_form form %}
+        <button class="btn" style="background-color: rgb(98, 47, 243); color: white;">comment</button>
+        </form>
+
+      </div><!--/. Search -->
+
+        </div><!--/ cardbox-like -->			  
+            
+    </div><!--/ cardbox -->
+    </div><!--/ col-lg-6 -->	
+
+    <div class="col-lg-3">
+        <div class="shadow-lg p-4 mb-2 bg-white author">
+         {% if request.user != review.user %}
+         {% if request.user in review.user.followers.all %}
+         <a href="{% url 'accounts:follow' review.user.username %}" class="btn btn-dark btn-sm btn-block text_R" >팔로우 취소</a>
+         {% else %}
+         <a href="{% url 'accounts:follow' review.user.username %}" class="btn btn-dark btn-sm btn-block text_R">팔로우</a>
+         {% endif %}
+        {% endif %}
+        </div>
+        </div>
+    </div>
+    </div><!--/ row -->
+    </div><!--/ container -->
+</section>
+
+{% endblock %}

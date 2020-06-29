@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block head %}
+<head>
+    <title>로그인 / 회원가입 폼 템플릿</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+@font-face {
+    font-family: NanumSquare_acB;
+    src: url(/static/fonts/NanumSquare_acB.ttf);
+}
+    * {
+    margin: 0;
+    padding: 0;
+    font-family: NanumSquare_acB;
+}
+
+.wrap {
+    height: 100%;
+    width: 100%;
+    background-image: url('/static/signup.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+.form-wrap {
+    width: 600px;
+    height: 580px;
+    position: relative;
+    margin: 6% auto;
+    background: white;
+    padding: 5px;
+    overflow: hidden;
+}
+
+
+.input-group {
+
+    position: absolute;
+    width: 600px;
+    transition: .5s;
+}
+.submit {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right, #ff105f, #ffad06);
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+}
+.loginform {
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+}
+
+.img-cover{
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background-color: rgba(0, 0, 0, 0.4);                                                                 
+   z-index:1;
+}
+
+</style>
+{% endblock %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="wrap">
+    <div class="form-wrap rounded-lg">
+        <form id="login" action="" class="input-group" method="POST">
+            {% csrf_token %}
+            <div class='loginform'>
+                <h4 style="text-align: center;">당신의 취향을 존중합니다</h4>
+                <br>
+                {% bootstrap_form form %}
+            </div>
+            <button class="submit">Signup</button>
+        </form>
+    </div>
+    
+</div>
+
+{% endblock %}

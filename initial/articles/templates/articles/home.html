@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'articles/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!--  취향저격 영화 -->
+<div class="bg_img">
+    <div class="container" style="padding-top: 60px;"> 
+        <div class="row text_B justify-content-md-center" style="margin-bottom: 30px; color: whitesmoke;">{{ request.user.username }}님의 취향 저격 영화</div>
+        <div class="row"> 
+            {% for movie in movies %} 
+            <div class="box" style="height: 450px; width:300px;"> 
+                <div class="m_name" data-toggle="tooltip" data-placement="top"> 
+                    <a href="{% url 'articles:movie_detail' movie.pk %}"><img style="height: 450px; width:300px;" src="https://image.tmdb.org/t/p/w300/{{movie.poster_path}}"></a>
+                </div> 
+                <span>{{ movie.title }}</span> 
+            </div> 
+            {% endfor %} 
+        </div> 
+    </div>
+</div>
+<div class="container" style="margin-top: 50px; margin-bottom: 200px; margin-top: 150px;">
+    <!-- 최근 본 영화-->
+    <!-- 최근에 본 영화가 없는 경우 -->
+    <div class="d-flex flex-column align-items-center">
+        {% if last_movie %}
+        <p class="text_B">최근 <a href="{% url 'articles:movie_detail' last_movie.pk %}" class="text-decoration-none" style="color: rgb(91, 38, 242);">{{ last_movie.title }}</a>에 대한 리뷰를 작성하였습니다.</p>
+        <p class="text_R">같은 영화를 감상한 사람들과 자유롭게 이야기를 나눠보세요!</p>
+        {% else %}
+        <p class="text_B">최근 본 영화가 없습니다.</p>
+        {% endif %}
+    </div>
+    <div class="d-flex justify-content-between">
+        {% for review in other_reviews %}
+            <div class="review_box" style="width: 31%;">
+                <div class="text-center" style="margin: 20px;">
+                    <div class="mb-3">
+                        {% if review.user.image %}
+                        <a href="{% url 'accounts:profile' review.user %}"><img class="profile_img" src = "{{ review.user.image.url }}" style="width: 100px; height: 100px;"></a>
+                        {% else %}
+                        <a href="{% url 'accounts:profile' review.user %}"><img class="profile_img" src = "/static/noprofile.jpg" style="width: 100px; height: 100px;"></a>
+                        {% endif %}
+                        <div class="text_L text-muted">{{ review.user }}</div>
+                    </div>
+                    <div class="txt_post text_L"><a href="{% url 'articles:review_detail' last_movie.pk review.pk %}" class="text-decoration-none text-body font-weight-bold">"{{ review.title }}"</a></div>
+                    <div class="txt_post text_L text-muted">{{ review.content }}</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

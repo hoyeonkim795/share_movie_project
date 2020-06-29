@@ -1,0 +1,178 @@
+.btn-poster {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn-poster img {
+    display: block;
+}
+
+.btn-poster:hover .poster-wrap {
+    background-color: black;
+}
+
+.btn-poster:hover img {
+    opacity: 0.4;
+}
+
+.btn-poster:hover .description {
+    visibility: visible;
+    opacity: 1;
+}
+
+.description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.card {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+/* home */
+.container1 { 
+    display: flex; 
+    width: 100%; 
+    padding: 4% 2%; 
+    box-sizing: border-box; 
+    height: 50vh; 
+    }   
+.box { 
+    flex: 1; 
+    overflow: hidden; 
+    transition: .5s; 
+    margin: 0 2%; 
+    box-shadow: 0 20px 30px rgba(0,0,0,.1); 
+    line-height: 0; 
+    } 
+.box > img { 
+    width: 100%; 
+    height: calc(100% - 10vh); 
+    object-fit: cover;  
+    transition: .5s; 
+    } 
+.box > span { 
+    font-size: 3.8vh; 
+    display: block; 
+    text-align: center; 
+    height: 10vh; 
+    line-height: 2.6; 
+    } 
+.box:hover { flex: 0 1 35%; } 
+.box:hover > img { 
+    width: 100%; 
+    height: 80%; 
+    } 
+
+.profile_img {
+    border-radius: 50%;
+}
+
+.txt_post {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    height: 3.6em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+    font-family: "font_L"
+  }
+.review_box {
+    box-shadow: 7px 7px 7px gray;
+}
+
+.bg_img {
+    height: 100vh;
+    background-image: url('/static/home_bg.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+
+}
+
+/* index */
+.index {
+    height: 100vh;
+    background-image: url('/static/index_bg.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+
+}
+.index2 {
+    height: 100vh;
+    background-image: url('/static/index_bg2.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+
+}
+/* movie_list */
+
+/* font */
+@font-face {
+    src : url('/static/fonts/NanumSquare_acR.ttf');
+    font-family: "font_R";
+}
+
+.text_R {
+    font-family: "font_R";
+    font-size: large;
+}
+
+@font-face {
+    src : url('/static/fonts/NanumSquare_acB.ttf');
+    font-family: "font_B";
+}
+
+.text_B {
+    font-family: "font_B";
+    font-size: x-large;
+}
+
+@font-face {
+    src : url('/static/fonts/NanumSquare_acR.ttf');
+    font-family: "font_L";
+}
+
+.text_L {
+    font-family: "font_L";
+    font-size: medium;
+}
+@font-face {
+    src : url('/static/fonts/NanumSquare_acL.ttf');
+    font-family: "font_XL";
+}
+
+.text_XL {
+    font-family: "font_XL";
+    font-size: medium;
+}
+
+/* community */
+.community_txt_post {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 2em;
+    height: 12em; /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+    font-family: "font_L"
+}
+.community_txt_post {
+    box-shadow: 7px 7px 7px gray;
+}
+.review_card {
+    opacity: 0.7;
+}

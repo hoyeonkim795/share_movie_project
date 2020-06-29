@@ -1,0 +1,18 @@
+@font-face {
+    src : url('/static/fonts/NanumSquare_acB.ttf');
+    font-family: "font_B";
+}
+@font-face {
+    src : url('/static/fonts/NanumSquare_acR.ttf');
+    font-family: "font_R";
+}
+
+.nav_title {
+    font-family: "font_B";
+    font-size: large;
+}
+
+.nav_text {
+    font-family: "font_R";
+    font-size: large;
+}
