@@ -122,7 +122,7 @@ def movie_detail(request, movie_pk):
     inputvalue = movie.title+'trailer'
     url = 'https://www.googleapis.com/youtube/v3/search'
     params = {
-        'key': '',
+        'key': 'AIzaSyDHJFDPLWnuggsHpXfjR7TabxVvyoBMpDw',
         'part': 'snippet',
         'type': 'video',
         'maxResults': '1',
@@ -275,7 +275,7 @@ def youtube(request, movie_pk):
     inputvalue = movie.orinal_title+'trailer'
     url = 'https://www.googleapis.com/youtube/v3/search'
     params = {
-        'key': '',
+        'key': 'AIzaSyDHJFDPLWnuggsHpXfjR7TabxVvyoBMpDw',
         'part': 'snippet',
         'type': 'video',
         'maxResults': '1',

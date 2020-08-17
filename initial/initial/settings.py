@@ -129,8 +129,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_DIRS = (
     os.path.join(BASE_DIR, "static"), # Root의 static 파일
+    '/articles/static/',	# garden App의 static 파일
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'profile')
 MEDIA_URL = '/profile/'
