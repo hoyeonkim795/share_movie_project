@@ -152,4 +152,4 @@ SHELL_PLUS_PRINT_SQL = True
 
 API_URL = "https://www.googleapis.com/youtube/v3/search"
 # YOUTUVE_API_KEY = get_secret('YOUTUVE_API_KEY')
-YOUTUBE_API_KEY = "AIzaSyCPz_ddnnn-ZBZ2Kw443XEnT0xYRBut4S4"
+YOUTUBE_API_KEY = "AIzaSyB4A0y1wabVMg1OfcpWaJOyoM0HYown9cE"
