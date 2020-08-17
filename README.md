@@ -1,5 +1,9 @@
 # 취향의 나눔
 
+## 배포주소
+
+http://3.129.58.101/articles/
+
 ### 개발 환경
 
 1) Python Web Framework
