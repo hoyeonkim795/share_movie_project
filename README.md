@@ -39,23 +39,25 @@
 - 회원가입
 - 로그아웃
 
+
+
 ### 페이지 구성 및 기능
 
 ![페이지](https://user-images.githubusercontent.com/60081282/85231562-17920a00-b433-11ea-9a23-a0d133090649.PNG)
-
-### 주요기능 코드
-
-
 
 ### 화면 UI
 
 #### Home
 
-![home](https://user-images.githubusercontent.com/60081282/85231755-d7cc2200-b434-11ea-843e-4b9319881261.PNG)
+![home](C:\Users\hy940\Desktop\85231755-d7cc2200-b434-11ea-843e-4b9319881261.PNG)
+
+
 
 #### Login
 
 ![로그인](https://user-images.githubusercontent.com/60081282/85231756-d995e580-b434-11ea-8eb4-7f5f9a8fe29a.PNG)
+
+
 
 #### MovieRecommend
 
@@ -63,21 +65,31 @@
 
 ![영화추천2](https://user-images.githubusercontent.com/60081282/85231760-dc90d600-b434-11ea-8c2d-dbe9491a6218.PNG)
 
+
+
 #### Profile
 
 ![프로필](https://user-images.githubusercontent.com/60081282/85231790-1235bf00-b435-11ea-9f80-e8b36b22256b.PNG)
+
+
 
 #### MovieList 
 
 ![movielist](https://user-images.githubusercontent.com/60081282/85231761-df8bc680-b434-11ea-87bc-3999dee55200.PNG)
 
+
+
 #### MovieDetail
 
 ![moviedetail](https://user-images.githubusercontent.com/60081282/85231767-e1558a00-b434-11ea-86cb-b78584920ae5.PNG)
 
+
+
 #### ReviewList
 
 ![reviewlist](https://user-images.githubusercontent.com/60081282/85231768-e31f4d80-b434-11ea-9a0e-78847a0409ac.PNG)
+
+
 
 #### ReviewDetail
 
