@@ -11,7 +11,7 @@ django-imagekit==4.0.2
 idna==2.9
 myapp==0.1.dev0
 pilkit==2.0
-Pillow==7.1.2
+Pillow==9.0.1
 pytz==2020.1
 requests==2.23.0
 six==1.15.0
